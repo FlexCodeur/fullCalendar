@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CalendrierRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -55,6 +57,13 @@ class Calendrier
 
     #[ORM\Column]
     private ?bool $grue = null;
+
+    #[ORM\ManyToOne(inversedBy: 'calendriers')]
+    private ?Vehicule $vehicule = null;
+
+    #[ORM\ManyToOne(inversedBy: 'calendriers')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Lot $lot = null;
 
     public function getId(): ?int
     {
@@ -225,6 +234,30 @@ class Calendrier
     public function setGrue(bool $grue): self
     {
         $this->grue = $grue;
+
+        return $this;
+    }
+
+    public function getVehicule(): ?Vehicule
+    {
+        return $this->vehicule;
+    }
+
+    public function setVehicule(?Vehicule $vehicule): self
+    {
+        $this->vehicule = $vehicule;
+
+        return $this;
+    }
+
+    public function getLot(): ?Lot
+    {
+        return $this->lot;
+    }
+
+    public function setLot(?Lot $lot): self
+    {
+        $this->lot = $lot;
 
         return $this;
     }

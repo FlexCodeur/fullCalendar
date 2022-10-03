@@ -1,0 +1,41 @@
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    let calendarEl = document.getElementById('calendar');
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      buttonText: {
+        today:    "Aujourd'hui",
+        month:    'Mois',
+        week:     'Semiane',
+        day:      'Jour',
+        list:     'liste'
+      },
+      allDaySlot: false,
+      locale: 'fr',
+      timeZone: 'Europe/Paris',
+      businessHours: {
+        daysOfWeek: [1, 2, 3, 4, 5],
+        startTime: '7:00',
+        endTime: '18:00'
+      },
+      weekends: false,
+      headerToolbar: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'today,dayGridMonth,timeGridWeek,listWeek'
+      },
+      events: {{ datas|raw }},
+      eventTimeFormat: {
+        hour: 'numeric',
+        minute: '2-digit',
+        meridiem: false
+      },
+      dateClick: function(info) {
+        calendar.changeView("timeGridWeek", info.view.type);
+      }
+    });
+    calendar.render();
+  });
+
+</script>
