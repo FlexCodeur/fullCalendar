@@ -7,9 +7,14 @@
       buttonText: {
         today:    "Aujourd'hui",
         month:    'Mois',
-        week:     'Semiane',
+        week:     'Semaine',
         day:      'Jour',
         list:     'liste'
+      },
+      headerToolbar: {
+        left: 'prev,next',
+        center: 'title',
+        right: 'today,dayGridMonth,timeGridWeek,listWeek'
       },
       allDaySlot: false,
       locale: 'fr',
@@ -19,12 +24,7 @@
         startTime: '7:00',
         endTime: '18:00'
       },
-      weekends: false,
-      headerToolbar: {
-        left: 'prev,next',
-        center: 'title',
-        right: 'today,dayGridMonth,timeGridWeek,listWeek'
-      },
+      slotDuration: '0:30:00',
       events: {{ datas|raw }},
       eventTimeFormat: {
         hour: 'numeric',

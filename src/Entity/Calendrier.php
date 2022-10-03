@@ -34,14 +34,11 @@ class Calendrier
     #[ORM\Column(length: 255)]
     private ?string $prenomReferent = null;
 
-    #[ORM\Column]
-    private ?int $telephone = null;
+    #[ORM\Column(length: 10)]
+    private ?string $telephone = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $shipAt = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $startAt = null;
@@ -162,18 +159,6 @@ class Calendrier
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getShipAt(): ?\DateTimeInterface
-    {
-        return $this->shipAt;
-    }
-
-    public function setShipAt(\DateTimeInterface $shipAt): self
-    {
-        $this->shipAt = $shipAt;
 
         return $this;
     }

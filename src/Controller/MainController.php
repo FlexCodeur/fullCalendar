@@ -20,7 +20,7 @@ class MainController extends AbstractController
                 'title' => $calendar->getEntreprise(),
                 'start' => $calendar->getStartAt()->format('Y-m-d H:i:s'),
                 'end' => $calendar->getEndAt()->format('Y-m-d H:i:s'),
-//                'description' => $calendar->getLot()->getNom()
+                'description' => $calendar->getLot()->getNom()
             ] ;
         }
         $datas = json_encode($events);
